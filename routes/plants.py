@@ -11,7 +11,7 @@ def add_plant():
 
 @app.route("/save-plant", methods=["POST"])
 def save_plant():
-    # print(request.form.getlist("employees"))
+
     name = request.form.get("name")
     location = request.form.get("location")
     plant = Plant(title=name, location=location)
@@ -27,7 +27,6 @@ def save_plant():
 @app.route("/delete-plant/<int:id>")
 def delete_plant(id):
     plant = Plant.query.get(id)
-    print(plant.id)
     db.session.delete(plant)
     db.session.commit()
     return redirect("/")

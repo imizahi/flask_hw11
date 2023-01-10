@@ -13,6 +13,7 @@ def employees_home():
 def add_employee():
     if request.method == "POST":
         data = request.form
+
         try:
             employee = Employee(
                 first_name=data.get("first_name"),
@@ -20,6 +21,7 @@ def add_employee():
                 email=data.get("email"),
                 plant_id=int(data.get("plant_id"))
             )
+
             db.session.add(employee)
             db.session.commit()
         except:
